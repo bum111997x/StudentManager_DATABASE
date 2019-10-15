@@ -42,21 +42,21 @@ class StudentManager
         $stmt->execute();
     }
 
-    public function showStudentByIndex($index)
+    public function showStudentByIndex($id)
     {
         $stmt = $this->conn->prepare('SELECT name,phone,address FROM `studentmanager` WHERE id=:id');
-        $stmt->bindParam(':id', $index);
+        $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetch();
     }
 
-    public function update($index,$studentInfo)
+    public function update($id, $studentInfo)
     {
         $stmt = $this->conn->prepare('UPDATE studentmanager SET name=:name,phone=:phone,address=:address WHERE id=:id');
         $stmt->bindParam(':name',$studentInfo->name);
         $stmt->bindParam(':phone',$studentInfo->phone);
         $stmt->bindParam(':address',$studentInfo->address);
-        $stmt->bindParam(':id',$index);
+        $stmt->bindParam(':id',$id);
         $stmt->execute();
     }
 }

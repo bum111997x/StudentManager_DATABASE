@@ -19,7 +19,7 @@ $list = $studentManager->getAll();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
+<body background="image/giphy.gif">
 <form action="add.php" method="post">
     <center>
         <table>
@@ -53,7 +53,7 @@ $list = $studentManager->getAll();
 <br>
 
 <table class="table table-bordered">
-    <tr>
+    <tr class="bg-primary">
         <th scope="col" style="text-align: center">STT</th>
         <th scope="col" style="text-align: center">Name</th>
         <th scope="col" style="text-align: center">Phone</th>
