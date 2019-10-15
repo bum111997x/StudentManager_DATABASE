@@ -19,9 +19,10 @@ $list = $studentManager->getAll();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body background="image/giphy.gif">
-<form action="CRUD/add.php" method="post">
-    <center>
+<body background="image/giphy.gif" style="text-align: center">
+<div style="display: inline-block">
+    <form action="CRUD/add.php" method="post">
+
         <table>
             <tr><h1>Quản lý sinh viên </h1></tr>
             <tr>
@@ -40,16 +41,11 @@ $list = $studentManager->getAll();
                 <td colspan="2"><input class="btn " type="submit" value="submit" style="color: #CD214F"></td>
             </tr>
         </table>
-    </center>
-</form>
 
-<center>
-    <table>
-        <tr>
-            <th colspan="5" style="text-align: center; font-size: 30px">Danh sách sinh</th>
-        </tr>
-    </table>
-</center>
+    </form>
+</div>
+<h2 style="text-align: center">Danh sách sinh viên </h2>
+
 <br>
 
 <table class="table table-bordered">
