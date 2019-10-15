@@ -1,7 +1,7 @@
 <?php
-include_once "StudentManager.php";
-include_once "DBConnect.php";
-include_once "User.php";
+include_once "Class/StudentManager.php";
+include_once "Class/DBConnect.php";
+include_once "Class/User.php";
 
 $studentManager = new StudentManager();
 $list = $studentManager->getAll();
@@ -20,7 +20,7 @@ $list = $studentManager->getAll();
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body background="image/giphy.gif">
-<form action="add.php" method="post">
+<form action="CRUD/add.php" method="post">
     <center>
         <table>
             <tr><h1>Quản lý sinh viên </h1></tr>
@@ -70,10 +70,10 @@ $list = $studentManager->getAll();
             <td class="table-secondary" style="text-align: center"><?php echo $item->name ?></td>
             <td class="table-success" style="text-align: center"><?php echo $item->phone ?></td>
             <td class="table-danger" style="text-align: center"><?php echo $item->address ?></td>
-            <td class="table-warning" style="text-align: center"><a href="delete.php?id=<?php echo $item->id ?>"
+            <td class="table-warning" style="text-align: center"><a href="CRUD/delete.php?id=<?php echo $item->id ?>"
                                                                     onclick="return confirm('Are you sure??????')">Delete</a>
             </td>
-            <td class="table-info"><a href="edit.php?id=
+            <td class="table-info"><a href="CRUD/edit.php?id=
             <?php echo $item->id ?>" onclick="return confirm('Are you sure??????')">Edit</a>
             </td>
         </tr>

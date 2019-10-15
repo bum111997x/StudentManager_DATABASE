@@ -1,7 +1,7 @@
 <?php
-include_once "User.php";
-include_once "StudentManager.php";
-include_once "DBConnect.php";
+include_once "../Class/User.php";
+include_once "../Class/StudentManager.php";
+include_once "../Class/DBConnect.php";
 
 $studentManager = new StudentManager();
 
@@ -14,5 +14,5 @@ $address = $_GET['address'];
 $studentInfo = new User($name,$phone,$address);
 $studentManager->update($index,$studentInfo);
 
-header('Location: index.php');
+header('Location: ../index.php');
 ?>

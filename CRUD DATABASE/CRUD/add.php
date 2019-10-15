@@ -1,7 +1,7 @@
 <?php
-include_once "StudentManager.php";
-include_once "DBConnect.php";
-include_once "User.php";
+include_once "../Class/StudentManager.php";
+include_once "../Class/DBConnect.php";
+include_once "../Class/User.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $name = $_POST['name'];
@@ -13,4 +13,4 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $studentManager->add($student);
 }
 
-header('Location: index.php');
+header('Location: ../index.php');

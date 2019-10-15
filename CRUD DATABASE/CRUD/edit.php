@@ -1,7 +1,7 @@
 <?php
-include_once "User.php";
-include_once "StudentManager.php";
-include_once "DBConnect.php";
+include_once "../Class/User.php";
+include_once "../Class/StudentManager.php";
+include_once "../Class/DBConnect.php";
 
 $index = $_GET['id'];
 $studentManager = new StudentManager();
@@ -24,7 +24,7 @@ $address = $displayInfo['address'];
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
+<body background="../image/giphy.gif">
 <form action="update.php" method="get">
     <center>
         <table>
