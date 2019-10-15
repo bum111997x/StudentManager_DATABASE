@@ -1,21 +1,15 @@
 <?php
+include_once "User.php";
 include_once "StudentManager.php";
 include_once "DBConnect.php";
-include_once "User.php";
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
-
-    $student = new User($name, $phone, $address);
-    $studentManager = new StudentManager();
-    $studentManager->add($student);
-}
-
+$index = $_GET['id'];
 $studentManager = new StudentManager();
-$list = $studentManager->getAll();
+$displayInfo = $studentManager->showStudentByIndex($index);
 
+$name = $displayInfo['name'];
+$phone = $displayInfo['phone'];
+$address = $displayInfo['address'];
 
 ?>
 
@@ -31,29 +25,31 @@ $list = $studentManager->getAll();
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<form action="" method="post">
+<form action="update.php" method="get">
     <center>
         <table>
-            <tr><h1>Quản lý sinh viên </h1></tr>
+            <tr><h1>Quản lý sinh viên</h1></tr>
+            <tr style="display: none">
+                <td><input type="text" name="id" value="<?php echo $index ?>"></td>
+            </tr>
             <tr>
                 <td>Name:</td>
-                <td><input type="text" name="name" style="border-radius: 10px"></td>
+                <td><input type="text" name="name" style="border-radius: 10px" value="<?php echo $name ?>"></td>
             </tr>
             <tr>
                 <td>Phone:</td>
-                <td><input type="text" name="phone" style="border-radius: 10px"></td>
+                <td><input type="text" name="phone" style="border-radius: 10px" value="<?php echo $phone ?>"></td>
             </tr>
             <tr>
                 <td>Address:</td>
-                <td><input type="text" name="address" style="border-radius: 10px"></td>
+                <td><input type="text" name="address" style="border-radius: 10px" value="<?php echo $address ?>"></td>
             </tr>
             <tr>
-                <td colspan="2"><input class="btn " type="submit" value="submit" style="color: #CD214F"></td>
+                <td colspan="2"><input class="btn " type="submit" value="update" style="color: #CD214F"></td>
             </tr>
         </table>
     </center>
 </form>
-
 <center>
     <table>
         <tr>
@@ -69,11 +65,11 @@ $list = $studentManager->getAll();
         <th scope="col" style="text-align: center">Name</th>
         <th scope="col" style="text-align: center">Phone</th>
         <th scope="col" style="text-align: center">Address</th>
-        <th scope="col" style="text-align: center">Delete</th>
-        <th scope="col" style="text-align: center">Edit</th>
     </tr>
     <tbody>
     <?php
+    $list = $studentManager->getAll();
+
     foreach ($list as $key => $item) {
         ?>
         <tr>
@@ -81,12 +77,6 @@ $list = $studentManager->getAll();
             <td class="table-secondary" style="text-align: center"><?php echo $item->name ?></td>
             <td class="table-success" style="text-align: center"><?php echo $item->phone ?></td>
             <td class="table-danger" style="text-align: center"><?php echo $item->address ?></td>
-            <td class="table-warning" style="text-align: center"><a href="delete.php?id=<?php echo $item->id ?>"
-                                                                    onclick="return confirm('Are you sure??????')">Delete</a>
-            </td>
-            <td class="table-info"><a href="edit.php?id=
-            <?php echo $item->id ?>" onclick="return confirm('Are you sure??????')">Edit</a>
-            </td>
         </tr>
         <?php
     }
