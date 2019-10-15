@@ -50,12 +50,12 @@ class StudentManager
         return $stmt->fetch();
     }
 
-    public function update($index,$name,$phone,$address)
+    public function update($index,$studentInfo)
     {
         $stmt = $this->conn->prepare('UPDATE studentmanager SET name=:name,phone=:phone,address=:address WHERE id=:id');
-        $stmt->bindParam(':name',$name);
-        $stmt->bindParam(':phone',$phone);
-        $stmt->bindParam(':address',$address);
+        $stmt->bindParam(':name',$studentInfo->name);
+        $stmt->bindParam(':phone',$studentInfo->phone);
+        $stmt->bindParam(':address',$studentInfo->address);
         $stmt->bindParam(':id',$index);
         $stmt->execute();
     }

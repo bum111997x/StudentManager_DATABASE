@@ -3,19 +3,8 @@ include_once "StudentManager.php";
 include_once "DBConnect.php";
 include_once "User.php";
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
-
-    $student = new User($name, $phone, $address);
-    $studentManager = new StudentManager();
-    $studentManager->add($student);
-}
-
 $studentManager = new StudentManager();
 $list = $studentManager->getAll();
-
 
 ?>
 
@@ -31,7 +20,7 @@ $list = $studentManager->getAll();
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<form action="" method="post">
+<form action="add.php" method="post">
     <center>
         <table>
             <tr><h1>Quản lý sinh viên </h1></tr>
