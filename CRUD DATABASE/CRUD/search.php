@@ -1,13 +1,14 @@
 <?php
-include_once "Class/StudentManager.php";
-include_once "Class/DBConnect.php";
-include_once "Class/User.php";
+include_once "../Class/StudentManager.php";
+include_once "../Class/DBConnect.php";
+include_once "../Class/User.php";
 
 $studentManager = new StudentManager();
-$list = $studentManager->getAll();
+$text = $_POST['text'];
+$list = $studentManager->search($text);
+
 
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,17 +20,8 @@ $list = $studentManager->getAll();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body background="image/giphy.gif" style="text-align: center">
-
-<h2 style="text-align: center">Danh sách sinh viên </h2>
-<form method="post" action="CRUD/search.php">
-    <input type="text" name="text" style="border-radius: 10px">
-    <input type="submit" value="SEARCH">
-</form>
-<br>
-<form action="CRUD/add.php">
-    <button type="submit" value="ADD" onclick="return confirm('Are you sure??????')">ADD</button>
-</form>
+<body background="../image/giphy.gif" style="text-align: center">
+<a href="../index.php"><h2 style="text-align: center">Danh sách sinh viên </h2></a>
 <br>
 
 <table class="table table-bordered">

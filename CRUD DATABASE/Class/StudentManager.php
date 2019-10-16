@@ -14,7 +14,7 @@ class StudentManager
 
     public function getAll()
     {
-        $sql = 'SELECT * FROM studentmanager';
+        $sql = "SELECT * FROM studentmanager";
         $stmt = $this->conn->query($sql);
         $result = $stmt->fetchAll();
         $studentList = [];
@@ -58,5 +58,18 @@ class StudentManager
         $stmt->bindParam(':address',$studentInfo->address);
         $stmt->bindParam(':id',$id);
         $stmt->execute();
+    }
+
+    public function search($text)
+    {
+        $stmt = $this->conn->query("SELECT * FROM studentmanager WHERE name like '%$text%'");
+        $result = $stmt->fetchAll();
+        $studentList = [];
+        foreach ($result as $value) {
+            $student = new User($value['name'], $value['phone'], $value['address']);
+            $student->id = $value['id'];
+            array_push($studentList, $student);
+        }
+        return $studentList;
     }
 }
