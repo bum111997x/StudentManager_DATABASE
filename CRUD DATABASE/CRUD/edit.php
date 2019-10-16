@@ -50,39 +50,7 @@ $address = $displayInfo['address'];
         </table>
     </center>
 </form>
-<center>
-    <table>
-        <tr>
-            <th colspan="5" style="text-align: center; font-size: 30px">Danh sách sinh</th>
-        </tr>
-    </table>
-</center>
-<br>
 
-<table class="table table-bordered">
-    <tr>
-        <th scope="col" style="text-align: center">STT</th>
-        <th scope="col" style="text-align: center">Name</th>
-        <th scope="col" style="text-align: center">Phone</th>
-        <th scope="col" style="text-align: center">Address</th>
-    </tr>
-    <tbody>
-    <?php
-    $list = $studentManager->getAll();
-
-    foreach ($list as $key => $item) {
-        ?>
-        <tr>
-            <td class="table-primary" style="text-align: center"><?php echo ++$key ?></td>
-            <td class="table-secondary" style="text-align: center"><?php echo $item->name ?></td>
-            <td class="table-success" style="text-align: center"><?php echo $item->phone ?></td>
-            <td class="table-danger" style="text-align: center"><?php echo $item->address ?></td>
-        </tr>
-        <?php
-    }
-    ?>
-    </tbody>
-</table>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
