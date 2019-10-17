@@ -5,7 +5,7 @@ include_once "../Class/User.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $image = $_FILES['image']['name'];
-    $target = "../image/" . basename($image);
+    $target = "../image/" .date('Y-m-d'). basename($image);
     $student = new User($_POST['name'], $_POST['phone'], $_POST['address'], $target);
     $studentManager = new StudentManager();
     $studentManager->add($student);

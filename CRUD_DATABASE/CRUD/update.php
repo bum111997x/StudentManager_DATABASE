@@ -3,17 +3,16 @@ include_once "../Class/User.php";
 include_once "../Class/StudentManager.php";
 include_once "../Class/DBConnect.php";
 
-$studentManager = new StudentManager();
-
-$index = $_GET['id'];
-
-$name = $_GET['name'];
-$phone = $_GET['phone'];
-$address = $_GET['address'];
-$image = $_GET['image'];
-
-$studentInfo = new User($name,$phone,$address,$image);
-$studentManager->update($index,$studentInfo);
-
-header('Location: ../index.php');
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
+    $index = $_GET['id'];
+    $image = $_FILES['image']['name'];
+    var_dump($image);
+    die();
+    $target = "../image/" . date('Y-m-d') . basename($image);
+    $student = new User($_GET['name'], $_GET['phone'], $_GET['address'], $target);
+    $studentManager = new StudentManager();
+    move_uploaded_file($_FILES['image']['tmp_name'], $target);
+    $studentManager->update($index, $student);
+    header('Location: ../index.php');
+}
 ?>
