@@ -24,7 +24,7 @@ $image = $infoStudent['image'];
     <title>Document</title>
 </head>
 <body>
-<form method="GET" action="update.php">
+<form method="post" action="update.php" enctype="multipart/form-data">
     <table>
         <tr><td><input type="text" name="id" value="<?php echo $index ?>"></td></tr>
         <tr>
