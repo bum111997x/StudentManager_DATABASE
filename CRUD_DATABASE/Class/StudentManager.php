@@ -49,7 +49,13 @@ class StudentManager
         $stmt = $this->conn->prepare('SELECT name,phone,address,image FROM `studentmanager` WHERE id=:id');
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        return $stmt->fetch();
+        $student =  $stmt->fetch();
+        $name = $student['name'];
+        $phone = $student['phone'];
+        $address = $student['address'];
+        $image = $student['image'];
+        $student = new User($name,$phone,$address,$image);
+        return $student;
     }
 
     public function update($id, $studentInfo)
@@ -75,4 +81,5 @@ class StudentManager
         }
         return $studentList;
     }
+
 }

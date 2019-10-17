@@ -9,7 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $target = "../image/" . date('Y-m-d') . basename($image);
     $student = new User($_GET['name'], $_GET['phone'], $_GET['address'], $target);
     $studentManager = new StudentManager();
+    $imageName = $studentManager->showStudentByIndex($index);
     move_uploaded_file($_FILES['image']['tmp_name'], $target);
+    unlink('../image/'.$imageName->image);
     $studentManager->update($index, $student);
     header('Location: ../index.php');
 }

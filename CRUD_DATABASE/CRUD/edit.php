@@ -7,10 +7,7 @@ $index = $_GET['id'];
 $studentManager = new StudentManager();
 $infoStudent = $studentManager->showStudentByIndex($index);
 
-$name = $infoStudent['name'];
-$phone = $infoStudent['phone'];
-$address = $infoStudent['address'];
-$image = $infoStudent['image'];
+
 ?>
 
 
@@ -29,19 +26,19 @@ $image = $infoStudent['image'];
         <tr><td><input type="text" name="id" value="<?php echo $index ?>"></td></tr>
         <tr>
             <td>Name:</td>
-            <td><input type="text" name="name" value="<?php echo $name ?>"></td>
+            <td><input type="text" name="name" value="<?php echo $infoStudent->name ?>"></td>
         </tr>
         <tr>
             <td>Phone:</td>
-            <td><input type="text" name="phone" value="<?php echo $name ?>"></td>
+            <td><input type="text" name="phone" value="<?php echo $infoStudent->phone ?>"></td>
         </tr>
         <tr>
             <td>Address:</td>
-            <td><input type="text" name="address" value="<?php echo $name ?>"></td>
+            <td><input type="text" name="address" value="<?php echo $infoStudent->address ?>"></td>
         </tr>
         <tr>
             <td>Image:</td>
-            <td><img src="<?php echo $image ?>"></td>
+            <td><img src="<?php echo $infoStudent->image ?>"></td>
             <td><input type="file" name="image"></td>
         </tr>
         <tr>
